@@ -18,7 +18,7 @@ from bokeh.resources import INLINE
 
 app = Flask(__name__)
 
-SECRET_KEY= "HKW1Q58mPZsGtyxGjyNh" #os.getenv('SECRET_KEY', default = 'SECRET_KEY')
+SECRET_KEY= os.getenv('SECRET_KEY', default = 'SECRET_KEY')
 app.vars={}
 
 @app.route('/')
