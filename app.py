@@ -13,12 +13,14 @@ import os
 import json
 import requests
 from bokeh.resources import INLINE
+from bokeh.palettes import Dark2_5 as palette
+import itertools
 
 
 
 app = Flask(__name__)
 
-SECRET_KEY= os.getenv('SECRET_KEY', default = 'SECRET_KEY')
+SECRET_KEY = os.getenv('SECRET_KEY', default = 'SECRET_KEY')
 app.vars={}
 
 @app.route('/')
@@ -34,7 +36,7 @@ def index():
         app.vars['feature']= request.form.getlist('feature')
         app.vars['ticker']=request.form['ticker']
 #getting data from API
-        url= 'https://www.quandl.com/api/v3/datasets/WIKI/' + app.vars['ticker'] + '/data.json?limit=5&api_key='+SECRET_KEY
+        url= 'https://www.quandl.com/api/v3/datasets/WIKI/{}/data.json?limit=5&api_key={}'.format(app.vars['ticker'], SECRET_KEY)
         req = requests.get(url)
         data = req.json()['dataset_data']['data']
         columns= req.json()['dataset_data']['column_names']
@@ -54,10 +56,10 @@ def bok():
 
 @app.route('/plot')
 def plot():
-    plot=figure()
+    plot=figure(x_axis_type="datetime")
     for box in app.vars['feature']:
         print(box)
-        plot.line(pd.to_datetime(app.vars['data']['Date']),app.vars['data'][box], line_width=1)
+        plot.line(pd.to_datetime(app.vars['data']['Date']),app.vars['data'][box], legend=box, line_width=1)
     return json.dumps(json_item(plot, "myplot"))
 
 @app.route('/about')
