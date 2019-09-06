@@ -10,20 +10,24 @@
     <title>Andres' app</title>
 
     <!-- Bootstrap core CSS -->
+    <link rel=stylesheet type=text/css href='{{ url_for('static', filename='app.css')}}'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   </head>
   <body>
     <div class=page>
-      <h1> Your stock info</h1>
+      <h1> Stock info</h1>
      <div class="cities">
-      <h4> Enter s stock ticker</h4>
+      <h4> Enter stock ticker</h4>
       <form id='input' method='post' action='index'>
         <p>
 					Ticker symbol: <input type='text' name='ticker' />
 	  			</p>
 	  			<p>
-        <input type="checkbox" name="feature" value="Close" checked> Closing<br>
-        <input type="checkbox" name="feature" value="Open"> Open
+        <input type="checkbox" name="feature" value="Close" checked> Close<br>
+        <input type="checkbox" name="feature" value="Open"> Open<br>
+        <input type="checkbox" name="feature" value="High"> High<br>
+        <input type="checkbox" name="feature" value="Low"> Low
+
 
          <input type="submit" value="Submit">
 
