@@ -8,8 +8,7 @@ from bokeh.resources import INLINE
 from bokeh.util.string import encode_utf8
 from bokeh.util.browser import  view
 import pandas as pd
-pip install quandl
-import quandl
+# import quandl
 import os
 import json
 import requests
@@ -19,8 +18,13 @@ from bokeh.resources import INLINE
 
 app = Flask(__name__)
 
-SECRET_KEY=os.getenv('SECRET_KEY', default = 'SECRET_KEY')
+SECRET_KEY= "HKW1Q58mPZsGtyxGjyNh" #os.getenv('SECRET_KEY', default = 'SECRET_KEY')
 app.vars={}
+
+@app.route('/')
+def main():
+    return redirect('/index')
+
 
 @app.route('/index', methods=['GET', 'POST'])
 def index():
