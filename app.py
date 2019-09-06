@@ -8,16 +8,18 @@ from bokeh.resources import INLINE
 from bokeh.util.string import encode_utf8
 from bokeh.util.browser import  view
 import pandas as pd
-
+pip install quandl
 import quandl
-
+import os
 import json
 import requests
 from bokeh.resources import INLINE
 
+
+
 app = Flask(__name__)
 
-
+SECRET_KEY=os.getenv('SECRET_KEY', default = 'SECRET_KEY')
 app.vars={}
 
 @app.route('/index', methods=['GET', 'POST'])
@@ -28,7 +30,7 @@ def index():
         app.vars['feature']= request.form.getlist('feature')
         app.vars['ticker']=request.form['ticker']
 #getting data from API
-        url= 'https://www.quandl.com/api/v3/datasets/WIKI/' + app.vars['ticker'] + '/data.json?limit=5&api_key=HKW1Q58mPZsGtyxGjyNh'
+        url= 'https://www.quandl.com/api/v3/datasets/WIKI/' + app.vars['ticker'] + '/data.json?limit=5&api_key='+SECRET_KEY
         req = requests.get(url)
         data = req.json()['dataset_data']['data']
         columns= req.json()['dataset_data']['column_names']
@@ -40,14 +42,7 @@ def index():
 
 @app.route('/bok')
 def bok():
-    # plot=figure()
-    # for box in app.vars['feature']:
-    #     print(box)
-    #     plot.line(pd.to_datetime(app.vars['data']['Date']),app.vars['data'][box], line_width=1)
-    # #
-    # # plot_resources = RESOURCES.render(js_raw=INLINE.js_raw, css_raw=INLINE.css_raw, js_files=INLINE.js_files, css_files=INLINE.css_files)
-    #
-    # div= json.dumps(json_item(plot, "plot_div"))
+
     return render_template('plot.html', ticker=app.vars['ticker'], resources=CDN.render())
 
 
@@ -66,4 +61,4 @@ def about():
   return render_template('about.html')
 
 if __name__ == '__main__':
-  app.run(debug= True)
+  app.run()
