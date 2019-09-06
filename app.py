@@ -8,7 +8,7 @@ from bokeh.resources import INLINE
 from bokeh.util.string import encode_utf8
 from bokeh.util.browser import  view
 import pandas as pd
-python -m pip install quandl
+conda install quandl
 import quandl
 import os
 import json
