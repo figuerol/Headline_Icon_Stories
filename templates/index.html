@@ -5,27 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Skeleton application demoing Heroku and Flask integration.">
     <meta name="author" content="@gotoariel">
-    <!-- <link rel="icon" href="favicon.ico"> -->
+    <!-- <link rel="icon" href="favicon.ico">-->
 
-    <title>Wilkommen, bienvenue, and welcome to Heroku!</title>
+    <title>Andres' app</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   </head>
   <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 text-left">
-          <h2>Hello, World!</h2>
-          <ul>
-            <li><a href="/about">About</a></li>
-            <li><a target="_blank" href="https://www.heroku.com/">Heroku</a></li>
-            <li><a target="_blank" href="http://flask.pocoo.org/">Flask</a></li>
-            <li><a target="_blank" href="http://jinja.pocoo.org/docs/2.9/">Jinja2</a></li>
-            <li><a target="_blank" href="http://getbootstrap.com/">Bootstrap</a></li>
-          </ul>
-        </div>
-      </div>
+    <div class=page>
+      <h1> Your stock info</h1>
+     <div class="cities">
+      <h4> Enter s stock ticker</h4>
+      <form id='input' method='post' action='index'>
+        <p>
+					Ticker symbol: <input type='text' name='ticker' />
+	  			</p>
+	  			<p>
+        <input type="checkbox" name="feature" value="Close" checked> Closing<br>
+        <input type="checkbox" name="feature" value="Open"> Open
+
+         <input type="submit" value="Submit">
+
+       </p>
+      </form>
     </div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
