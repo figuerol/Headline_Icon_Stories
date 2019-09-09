@@ -8,13 +8,13 @@ from bokeh.resources import INLINE
 from bokeh.util.string import encode_utf8
 from bokeh.util.browser import  view
 import pandas as pd
-# import quandl
+
 import os
 import json
 import requests
 from bokeh.resources import INLINE
 from bokeh.palettes import Dark2_5 as palette
-import itertools
+
 
 
 
@@ -57,9 +57,8 @@ def bok():
 @app.route('/plot')
 def plot():
     plot=figure(x_axis_type="datetime")
-    for box in app.vars['feature']:
-        print(box)
-        plot.line(pd.to_datetime(app.vars['data']['Date']),app.vars['data'][box], legend=box, line_width=1)
+    for i, box in enumerate(app.vars['feature']):
+        plot.line(pd.to_datetime(app.vars['data']['Date']),app.vars['data'][box], legend=box, color=palette[i], line_width=1)
     return json.dumps(json_item(plot, "myplot"))
 
 @app.route('/about')
