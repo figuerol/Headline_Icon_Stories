@@ -16,9 +16,6 @@ from bokeh.resources import INLINE
 from bokeh.palettes import Dark2_5 as palette
 
 
-=======
-import itertools
-
 
 
 
