@@ -61,14 +61,14 @@ def bok():
 @app.route('/plot')
 def plot():
     plot=figure(x_axis_type="datetime")
-<<<<<<< HEAD
+
     for i, box in enumerate(app.vars['feature']):
         plot.line(pd.to_datetime(app.vars['data']['Date']),app.vars['data'][box], legend=box, color=palette[i], line_width=1)
-=======
+
     for i,box in enumerate(app.vars['feature']):
         print(box)
         plot.line(pd.to_datetime(app.vars['data']['Date']),app.vars['data'][box], color= palette[i], legend=box, line_width=1)
->>>>>>> 5da43d807463e14f7e542579ab24aee86a7fe063
+
     return json.dumps(json_item(plot, "myplot"))
 
 @app.route('/about')
