@@ -14,11 +14,11 @@ import json
 import requests
 from bokeh.resources import INLINE
 from bokeh.palettes import Dark2_5 as palette
-<<<<<<< HEAD
+
 
 =======
 import itertools
->>>>>>> 5da43d807463e14f7e542579ab24aee86a7fe063
+
 
 
 
