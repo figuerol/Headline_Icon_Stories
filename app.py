@@ -59,7 +59,7 @@ def bok():
 def plot():
     plot=figure(x_axis_type="datetime")
 
-    for i, box in enumerate(app.vars['feature']):
+    for  box in app.vars['feature']:
         plot.line(pd.to_datetime(app.vars['data']['Date']),app.vars['data'][box], legend=box, color=palette[i], line_width=1)
 
     # for i,box in enumerate(app.vars['feature']):
