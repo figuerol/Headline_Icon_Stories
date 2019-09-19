@@ -2,23 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-   {{resources | safe}}
+
    <link style="stylesheet" type=text/css href='{{ url_for('static', filename='app.css')}}'>
 </head>
 <body>
    <div id="myplot"></div>
-  <script>
-    fetch('/plot')
-      .then(function(response) { return response.json(); })
-      .then(function(item) { Bokeh.embed.embed_item(item); })
-    </script>
 
-  <div>
-    <!-- The plot embedded below is a standalone plot that was embedded using
-    <fixed>autoload_static</fixed>. For more information see the
-    <a target="_blank" href="https://docs.bokeh.org/en/latest/docs/user_guide/embed.html#autoload-scripts">
-    documentation</a>. -->
-  </div>
-  <!-- {{ plot_div|safe }} -->
+    <h2>Topic:{{icon_topic|safe}}</h2>
+
+    <h2>Article Headline: {{icon_headline|safe}}</h2>
+
+    <h2>Article Snippet: {{icon_snippet|safe}}</h2>
+
+
 </body>
 </html>
